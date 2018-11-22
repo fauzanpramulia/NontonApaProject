@@ -26,7 +26,6 @@ public class DetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent i = getIntent();
-       // if (i !=null){
             MovieItems movie = getIntent().getParcelableExtra("movie");
 
             detailTitle.setText(movie.getTitle());
@@ -38,6 +37,5 @@ public class DetailActivity extends AppCompatActivity {
             Glide.with(this)
                     .load(url)
                     .into(imgView);
-       // }
     }
 }

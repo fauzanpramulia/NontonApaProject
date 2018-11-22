@@ -1,24 +1,29 @@
 package com.fauzanpramulia.nontonapaproject.db;
 
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
+import android.arch.persistence.room.Query;
+
 import java.util.List;
 
-import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
+
 
 @Dao
 public interface NowPlayingDao{
 
     @Query("SELECT * FROM now_playing")
-    List<NowPlaying> getAll();
+    List<NowPlaying> getAllMovies();
 
     @Query("SELECT * FROM now_playing WHERE id = :id")
     NowPlaying getById(int id);
 
-    @Insert
-    void insertAll(NowPlaying... nowPlayings);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertNowPlaying(NowPlaying nowPlaying);
 
+    @Query("DELETE FROM now_playing")
+    void clear();
     @Delete
     void delete(NowPlaying nowPlaying);
 }

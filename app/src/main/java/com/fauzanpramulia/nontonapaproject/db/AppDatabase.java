@@ -1,10 +1,11 @@
 package com.fauzanpramulia.nontonapaproject.db;
 
-import androidx.room.Database;
-import androidx.room.RoomDatabase;
 
-@Database(entities = {NowPlaying.class}, version = 1)
-public abstract class AppDatabase extends RoomDatabase{
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.RoomDatabase;
+
+@Database(entities = {NowPlaying.class}, version = 1, exportSchema = false)
+public abstract class AppDatabase extends RoomDatabase {
 
     public abstract NowPlayingDao nowPlayingDao();
 
